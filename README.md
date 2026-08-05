@@ -28,6 +28,12 @@ Prometheus can scrape the cached metrics frequently without increasing upstream 
 
 Prebuilt Linux, macOS, and Windows binaries for AMD64 and ARM64 are attached to each [GitHub release](https://github.com/outagedeck/prometheus-exporter/releases).
 
+With Homebrew on macOS or Linux:
+
+```bash
+brew install outagedeck/tap/outagedeck-prometheus-exporter
+```
+
 With Go 1.24 or newer:
 
 ```bash
