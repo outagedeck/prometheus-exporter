@@ -83,6 +83,18 @@ outagedeck_provider_status_code >= 3
 
 This alerts for degraded performance and outages while excluding planned maintenance. The example rules separately alert on unknown state, stale official-source data, and exporter refresh failures.
 
+## Grafana dashboard
+
+Import [`examples/grafana-dashboard.json`](examples/grafana-dashboard.json) into Grafana and select the Prometheus datasource that scrapes this exporter. The dashboard includes:
+
+- provider health and active-incident summaries;
+- a current service-status table;
+- provider status history;
+- official-source freshness; and
+- exporter refresh health and duration.
+
+The provider selector supports one, several, or all configured providers.
+
 ## Endpoints
 
 - `/metrics` — Prometheus metrics
