@@ -7,8 +7,9 @@ The exporter polls OutageDeck on a conservative five-minute interval, caches the
 ## Quick start
 
 ```bash
-docker run --rm -p 9787:9787 \
-  ghcr.io/outagedeck/prometheus-exporter:v0.1.0 \
+docker build -t outagedeck-prometheus-exporter \
+  https://github.com/outagedeck/prometheus-exporter.git#v0.1.0
+docker run --rm -p 9787:9787 outagedeck-prometheus-exporter \
   --providers github,aws,openai
 ```
 
