@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 30s
+
+rule_files:
+  - alerts.yml
+
+scrape_configs:
+  - job_name: outagedeck
+    static_configs:
+      - targets:
+          - outagedeck-exporter:9787

@@ -1,0 +1,47 @@
+groups:
+  - name: outagedeck
+    rules:
+      - alert: OutageDeckProviderDegraded
+        expr: outagedeck_provider_status_code >= 3
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.name }} is reporting a service disruption"
+          description: "OutageDeck provider status code is {{ $value }} for {{ $labels.provider }}."
+
+      - alert: OutageDeckProviderUnknown
+        expr: outagedeck_provider_status_code == 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.name }} status is unknown"
+          description: "OutageDeck cannot currently normalize the provider status."
+
+      - alert: OutageDeckServiceDegraded
+        expr: outagedeck_service_status_code >= 3
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $labels.name }} is reporting a service disruption"
+          description: "OutageDeck service status code is {{ $value }} for {{ $labels.service }}."
+
+      - alert: OutageDeckRefreshFailed
+        expr: outagedeck_scrape_success == 0
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "OutageDeck refresh failed for {{ $labels.provider }}"
+          description: "The exporter has failed to refresh this provider for at least 10 minutes."
+
+      - alert: OutageDeckSourceStale
+        expr: outagedeck_provider_source_age_seconds > 900
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "OutageDeck source data is stale for {{ $labels.name }}"
+          description: "The latest official-source observation is more than 15 minutes old."
