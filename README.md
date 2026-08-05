@@ -34,6 +34,13 @@ With Homebrew on macOS or Linux:
 brew install outagedeck/tap/outagedeck-prometheus-exporter
 ```
 
+On Windows with Scoop:
+
+```powershell
+scoop bucket add outagedeck https://github.com/outagedeck/scoop-bucket
+scoop install outagedeck/outagedeck-prometheus-exporter
+```
+
 With Go 1.24 or newer:
 
 ```bash
