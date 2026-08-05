@@ -9,17 +9,17 @@ The exporter polls OutageDeck on a conservative five-minute interval, caches the
 ```bash
 docker build -t outagedeck-prometheus-exporter \
   https://github.com/outagedeck/prometheus-exporter.git#v0.1.0
-docker run --rm -p 9787:9787 outagedeck-prometheus-exporter \
+docker run --rm -p 10049:10049 outagedeck-prometheus-exporter \
   --providers github,aws,openai
 ```
 
-Then open <http://localhost:9787/metrics> or add the target to Prometheus:
+Then open <http://localhost:10049/metrics> or add the target to Prometheus:
 
 ```yaml
 scrape_configs:
   - job_name: outagedeck
     static_configs:
-      - targets: ["outagedeck-exporter:9787"]
+      - targets: ["outagedeck-exporter:10049"]
 ```
 
 Prometheus can scrape the cached metrics frequently without increasing upstream API traffic. The exporter refreshes all configured providers separately on `--refresh-interval`.
@@ -49,7 +49,7 @@ go build ./cmd/outagedeck-prometheus-exporter
 | `--refresh-interval` | `OUTAGEDECK_REFRESH_INTERVAL` | `5m` | Upstream refresh interval |
 | `--request-timeout` | `OUTAGEDECK_REQUEST_TIMEOUT` | `10s` | Timeout for each provider request |
 | `--api-key` | `OUTAGEDECK_API_KEY` | empty | Optional API key |
-| `--web.listen-address` | `OUTAGEDECK_LISTEN_ADDRESS` | `:9787` | Exporter listen address |
+| `--web.listen-address` | `OUTAGEDECK_LISTEN_ADDRESS` | `:10049` | Exporter listen address |
 | `--web.telemetry-path` | `OUTAGEDECK_METRICS_PATH` | `/metrics` | Metrics path |
 | `--api-base-url` | `OUTAGEDECK_API_BASE_URL` | production API | Alternate API base for testing |
 

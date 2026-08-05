@@ -17,6 +17,6 @@ RUN CGO_ENABLED=0 go build \
 
 FROM gcr.io/distroless/static-debian12:nonroot
 COPY --from=build /outagedeck-prometheus-exporter /outagedeck-prometheus-exporter
-EXPOSE 9787
+EXPOSE 10049
 USER nonroot:nonroot
 ENTRYPOINT ["/outagedeck-prometheus-exporter"]

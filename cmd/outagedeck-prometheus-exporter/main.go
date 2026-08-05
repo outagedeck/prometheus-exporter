@@ -48,7 +48,7 @@ func main() {
 func run(args []string, stdout, stderr io.Writer) error {
 	flags := flag.NewFlagSet("outagedeck-prometheus-exporter", flag.ContinueOnError)
 	flags.SetOutput(stderr)
-	listenAddress := flags.String("web.listen-address", envOr("OUTAGEDECK_LISTEN_ADDRESS", ":9787"), "address on which to expose metrics")
+	listenAddress := flags.String("web.listen-address", envOr("OUTAGEDECK_LISTEN_ADDRESS", ":10049"), "address on which to expose metrics")
 	metricsPath := flags.String("web.telemetry-path", envOr("OUTAGEDECK_METRICS_PATH", "/metrics"), "path under which to expose metrics")
 	providersValue := flags.String("providers", envOr("OUTAGEDECK_PROVIDERS", "github,aws,openai"), "comma-separated OutageDeck provider slugs")
 	refreshInterval := flags.Duration("refresh-interval", envDuration("OUTAGEDECK_REFRESH_INTERVAL", 5*time.Minute), "interval between OutageDeck API refreshes")
