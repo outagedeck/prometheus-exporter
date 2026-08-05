@@ -8,7 +8,7 @@ The exporter polls OutageDeck on a conservative five-minute interval, caches the
 
 ```bash
 docker build -t outagedeck-prometheus-exporter \
-  https://github.com/outagedeck/prometheus-exporter.git#v0.1.1
+  https://github.com/outagedeck/prometheus-exporter.git#v0.2.0
 docker run --rm -p 10049:10049 outagedeck-prometheus-exporter \
   --providers github,aws,openai
 ```
