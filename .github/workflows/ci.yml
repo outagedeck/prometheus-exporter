@@ -29,6 +29,18 @@ jobs:
             and (.panels | length == 9)
             and (.templating.list[0].name == "provider")
           ' examples/grafana-dashboard.json >/dev/null
+      - name: Validate monitoring mixin
+        run: |
+          go install github.com/google/go-jsonnet/cmd/jsonnet@v0.20.0
+          jsonnet -e '(import "mixin/mixin.libsonnet").prometheusAlerts' |
+            jq -e '.groups[0].name == "outagedeck" and (.groups[0].rules | length) == 6' >/dev/null
+          mkdir -p "${RUNNER_TEMP}/outagedeck-dashboards"
+          jsonnet -m "${RUNNER_TEMP}/outagedeck-dashboards" \
+            -e '(import "mixin/mixin.libsonnet").grafanaDashboards'
+          jq -e '
+            .title == "OutageDeck Provider Status"
+            and (.panels | length == 9)
+          ' "${RUNNER_TEMP}/outagedeck-dashboards/outagedeck-provider-status.json" >/dev/null
       - name: Test
         run: go test -race ./...
       - name: Vet

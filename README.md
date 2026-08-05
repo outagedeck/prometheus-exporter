@@ -108,6 +108,10 @@ Import [`examples/grafana-dashboard.json`](examples/grafana-dashboard.json) into
 
 The provider selector supports one, several, or all configured providers.
 
+## Monitoring mixin
+
+The [`mixin`](mixin) directory packages six alert rules and the Grafana dashboard as a configurable [Prometheus monitoring mixin](https://monitoring.mixins.dev/). It can generate both artifacts through Jsonnet while keeping alert durations, the source-age threshold, and severity labels overridable.
+
 ## Endpoints
 
 - `/metrics` — Prometheus metrics
