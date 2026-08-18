@@ -1,6 +1,6 @@
 # OutageDeck Prometheus Exporter
 
-Export live cloud and SaaS provider status from [OutageDeck](https://outagedeck.com/?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter) as Prometheus metrics.
+Export vendor-published cloud and SaaS provider status from [OutageDeck](https://outagedeck.com/?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter) as Prometheus metrics.
 
 The exporter polls OutageDeck on a conservative five-minute interval, caches the latest provider snapshots, and serves them locally at `/metrics`. It works without an API key and supports optional keyed access for higher quotas.
 
@@ -66,7 +66,7 @@ go build ./cmd/outagedeck-prometheus-exporter
 | `--web.telemetry-path` | `OUTAGEDECK_METRICS_PATH` | `/metrics` | Metrics path |
 | `--api-base-url` | `OUTAGEDECK_API_BASE_URL` | production API | Alternate API base for testing |
 
-Browse the [live provider catalog](https://outagedeck.com/providers?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter) for valid slugs. The anonymous API permits 120 requests per hour; the default three providers at a five-minute refresh use 36 requests per hour. For larger or faster deployments, [create an API key](https://outagedeck.com/account?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter).
+Browse the [current provider catalog](https://outagedeck.com/providers?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter) for valid slugs. The anonymous API permits 120 requests per hour; the default three providers at a five-minute refresh use 36 requests per hour. For larger or faster deployments, [create an API key](https://outagedeck.com/account?utm_source=prometheus&utm_medium=integration&utm_campaign=prometheus_exporter).
 
 ## Metrics
 
